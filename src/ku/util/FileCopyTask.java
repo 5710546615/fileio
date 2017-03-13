@@ -155,7 +155,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask task2 = new FileCopyTask() {
 			/* run task2 */
 			public void run() {
-				FileUtil.copy(in, out, 1024);
+				FileUtil.copy(in, out, Byte.SIZE);
 			}
 
 			/* Get the information of task2 */
@@ -168,7 +168,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask task3 = new FileCopyTask() {
 			/* run task3 */
 			public void run() {
-				FileUtil.copy(in, out, 4 * 1024);
+				FileUtil.copy(in, out, 4 * Byte.SIZE);
 			}
 
 			/* Get the information of task3 */
@@ -181,7 +181,7 @@ public class FileCopyTask implements Runnable {
 		FileCopyTask task4 = new FileCopyTask() {
 			/* run task4 */
 			public void run() {
-				FileUtil.copy(in, out, 64 * 1024);
+				FileUtil.copy(in, out, 64 * Byte.SIZE);
 			}
 
 			/* Get the information of task4 */

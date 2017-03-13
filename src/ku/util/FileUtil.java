@@ -47,13 +47,19 @@ public class FileUtil {
 			while ((n = in.read(buffer)) > -1) {
 				out.write(buffer, 0, n);
 			}
-			in.close();
-			out.close();
 		} catch (RuntimeException r) {
 			throw new RuntimeException();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+
 	}
 
 	/**
@@ -66,20 +72,24 @@ public class FileUtil {
 	 *            is the file which is copy's destination.
 	 */
 	static void bcopy(InputStream in, OutputStream out) {
-
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		PrintWriter pw = new PrintWriter(out);
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			PrintWriter pw = new PrintWriter(out);
 			String s;
 			while ((s = br.readLine()) != null) {
 				pw.write(s + "\n");
 			}
-			br.close();
-			pw.close();
 		} catch (RuntimeException r) {
 			throw new RuntimeException();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+				pw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
